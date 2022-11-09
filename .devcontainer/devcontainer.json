@@ -3,7 +3,7 @@
   "dockerFile": "Dockerfile",
   // https://github.com/devcontainers/images/blob/main/.devcontainer/devcontainer.json
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:1": {}
+    "ghcr.io/devcontainers/features/docker-from-docker:1": {}
   },
   "runArgs": [
     "--env-file",
