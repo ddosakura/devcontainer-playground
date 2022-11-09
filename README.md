@@ -5,6 +5,7 @@ playground of
 with some images
 
 **开发容器需要有个非 root 用户 e.g. uid/gid=1000**
+**需要能挂载 `/var/run/docker.sock`**
 
 - .devcontainer **VSCode Dev Containers**
 - .docker **Docker Dev Environments**
@@ -23,7 +24,7 @@ with some images
   "image": "mcr.microsoft.com/vscode/devcontainers/base:0-bullseye",
   "dockerFile": "Dockerfile",
   "build": { "dockerfile": "Dockerfile" },
-  "tips: "三选一"
+  "tips": "三选一"
 }
 ```
 
