@@ -1,20 +1,27 @@
 {
   "name": "playground",
-  "build": {
-    "dockerfile": "Dockerfile"
+  "dockerFile": "Dockerfile",
+  // https://github.com/devcontainers/images/blob/main/.devcontainer/devcontainer.json
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {}
   },
   "runArgs": [
     "--env-file",
     ".devcontainer/.env"
   ],
-  "settings": {
-    "editor.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
-    "editor.fontLigatures": true
-  },
-  "extensions": [
-    "ms-azuretools.vscode-docker",
-    "denoland.vscode-deno",
-    "eamodio.gitlens"
-  ],
-  "remoteUser": "vscode"
+  "postCreateCommand": "npm install -g @devcontainers/cli",
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "denoland.vscode-deno",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "editor.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+        "editor.fontLigatures": true
+      }
+    }
+  }
 }
