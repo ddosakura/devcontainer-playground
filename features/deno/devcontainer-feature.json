@@ -1,0 +1,38 @@
+{
+  "id": "deno",
+  "version": "1.0.0",
+  "name": "Deno (via dvm)",
+  "documentationURL": "https://github.com/ddosakura/devcontainer-playground/tree/main/features/deno",
+  "description": "Installs Deno via dvm.",
+  "options": {
+    "version": {
+      "type": "string",
+      "proposals": [
+        "latest",
+        "1.27.2",
+        "none"
+      ],
+      "default": "latest",
+      "description": "Select or enter a Deno version to install"
+    },
+    "dvmInstallPath": {
+      "type": "string",
+      "default": "/usr/local/share/nvm",
+      "description": "The path where NVM will be installed."
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "denoland.vscode-deno"
+      ]
+    }
+  },
+  "containerEnv": {
+    "DVM_DIR": "/usr/local/share/dvm",
+    "PATH": "/usr/local/share/dvm/bin:${PATH}"
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}

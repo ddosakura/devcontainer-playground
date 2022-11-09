@@ -1,0 +1,21 @@
+{
+  "dockerFile": "Dockerfile",
+  "features": {
+    // https://github.com/devcontainers/features/tree/main/src/rust
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "1.65.0"
+    },
+    // https://github.com/devcontainers/features/tree/main/src/node
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18.12.1"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "eamodio.gitlens",
+        "denoland.vscode-deno"
+      ]
+    }
+  }
+}
