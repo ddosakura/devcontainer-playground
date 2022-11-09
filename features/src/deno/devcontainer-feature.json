@@ -1,6 +1,6 @@
 {
   "id": "deno",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "name": "Deno (via dvm)",
   "documentationURL": "https://github.com/ddosakura/devcontainer-playground/tree/main/features/deno",
   "description": "Installs Deno via dvm.",

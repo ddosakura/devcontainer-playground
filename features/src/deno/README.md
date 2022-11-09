@@ -6,6 +6,7 @@ Installs Deno via dvm.
 
 ```json
 "features": {
+  // https://github.com/ddosakura/devcontainer-playground/releases/devcontainer-feature-deno.tgz
   "ghcr.io/ddosakura/devcontainer-playground/deno:1": {
     "version": "latest"
   }
