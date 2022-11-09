@@ -5,7 +5,7 @@ playground of
 with some images
 
 **开发容器需要有个非 root 用户 e.g. uid/gid=1000**
-**需要能挂载 `/var/run/docker.sock`**
+~~需要能挂载 `/var/run/docker.sock`~~
 
 - .devcontainer **VSCode Dev Containers**
 - .docker **Docker Dev Environments**

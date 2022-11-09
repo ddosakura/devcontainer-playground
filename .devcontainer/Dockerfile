@@ -1,6 +1,6 @@
 # https://github.com/denoland/deno_std/blob/main/.devcontainer/Dockerfile
-FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:0-bullseye
-# FROM mcr.microsoft.com/devcontainers/base:1.0.0-ubuntu22.04
+# FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:0-bullseye
+FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/base:1.0.0-ubuntu20.04
 
 ENV DENO_INSTALL=/deno
 RUN mkdir -p /deno \

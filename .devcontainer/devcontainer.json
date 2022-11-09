@@ -5,8 +5,10 @@
   // https://github.com/devcontainers/images/blob/main/.devcontainer/devcontainer.json
   // "image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
   "features": {
-    /// "ghcr.io/devcontainers/features/docker-from-docker:1": {}
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {
+      "moby": false
+    }
   },
   "runArgs": [
     "--env-file",
