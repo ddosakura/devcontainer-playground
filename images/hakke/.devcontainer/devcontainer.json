@@ -1,18 +1,23 @@
 {
   "image": "mcr.microsoft.com/devcontainers/base:1.0.0-ubuntu20.04",
   "features": {
-    "ghcr.io/ddosakura/devcontainer-playground/deno:0": {
-      "version": "1.27.2"
+    // https://github.com/devcontainers/features/tree/main/src/rust
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "1.65.0"
     },
     // https://github.com/devcontainers/features/tree/main/src/node
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18.12.1"
     },
-    // https://github.com/devcontainers/features/tree/main/src/rust
-    "ghcr.io/devcontainers/features/rust:1": {
-      "version": "1.65.0"
+    "ghcr.io/ddosakura/devcontainer-playground/deno:0": {
+      "version": "1.27.2"
     }
   },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/rust",
+    "ghcr.io/devcontainers/features/node",
+    "ghcr.io/ddosakura/devcontainer-playground/deno"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
