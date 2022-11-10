@@ -41,6 +41,9 @@ with some images
 - [cli](https://github.com/devcontainers/cli)
 
 ```bash
+echo $PAT | docker login ghcr.io --username ddosakura --password-stdin
+devcontainer features publish features/src --namespace ddosakura/devcontainer-playground
+
 cd images/hakke
 devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.0.0 .
 docker push ddosakura/hakke:1.0.0
