@@ -1,0 +1,8 @@
+{
+  "node": {
+    "image": "ubuntu:focal",
+    "features": {
+      "node": {}
+    }
+  }
+}

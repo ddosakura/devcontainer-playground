@@ -1,0 +1,8 @@
+{
+  "deno": {
+    "image": "ubuntu:focal",
+    "features": {
+      "deno": {}
+    }
+  }
+}
