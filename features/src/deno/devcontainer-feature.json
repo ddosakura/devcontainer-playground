@@ -17,8 +17,8 @@
     },
     "dvmInstallPath": {
       "type": "string",
-      "default": "/usr/local/share/nvm",
-      "description": "The path where NVM will be installed."
+      "default": "/usr/local/share/dvm",
+      "description": "The path where DVM will be installed."
     }
   },
   "customizations": {

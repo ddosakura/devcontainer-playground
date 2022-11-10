@@ -1,1 +1,20 @@
-{}
+{
+  "non_root_user": {
+    "image": "mcr.microsoft.com/devcontainers/base",
+    "remoteUser": "vscode",
+    "features": {
+      "deno": {
+        "version": "latest"
+      }
+    }
+  },
+  "version_none": {
+    "image": "mcr.microsoft.com/devcontainers/base",
+    "remoteUser": "vscode",
+    "features": {
+      "deno": {
+        "version": "none"
+      }
+    }
+  }
+}

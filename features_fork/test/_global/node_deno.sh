@@ -6,8 +6,8 @@ set -e
 source dev-container-features-test-lib
 
 # Definition specific tests
-check "version" deno -V
-check "dvm" bash -c "/usr/local/share/dvm/bin/dvm ls"
+check "check for node" node --version
+check "check for deno" deno -V
 
 # Report result
 reportResults

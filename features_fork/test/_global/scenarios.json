@@ -1,8 +1,8 @@
 {
-  "node": {
+  "node_deno": {
     "image": "ubuntu:focal",
     "features": {
-      "node": {}
+      "node_deno": {}
     }
   }
 }
