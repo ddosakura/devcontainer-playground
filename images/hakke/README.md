@@ -17,13 +17,13 @@ corepack enable
 
 - ddosakura/hakke
   - eamodio.gitlens
-- ghcr.io/devcontainers/features/rust:1
+- [ghcr.io/devcontainers/features/rust:1](https://github.com/devcontainers/features/blob/main/src/rust/devcontainer-feature.json)
   - vadimcn.vscode-lldb
   - mutantdino.resourcemonitor
   - rust-lang.rust-analyzer
   - tamasfe.even-better-toml
   - serayuzgur.crates
-- ghcr.io/devcontainers/features/node:1
+- [ghcr.io/devcontainers/features/node:1](https://github.com/devcontainers/features/blob/main/src/node/devcontainer-feature.json)
   - dbaeumer.vscode-eslint
-- ghcr.io/ddosakura/devcontainer-playground/deno:0
+- [ghcr.io/ddosakura/devcontainer-playground/deno:0](../../features/src/deno/devcontainer-feature.json)
   - denoland.vscode-deno
