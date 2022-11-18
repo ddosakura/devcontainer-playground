@@ -12,3 +12,18 @@ cargo install wasm-pack
 # https://nodejs.org/dist/latest-v18.x/docs/api/corepack.html
 corepack enable
 ```
+
+## vscode 插件列表
+
+- ddosakura/hakke
+  - eamodio.gitlens
+- ghcr.io/devcontainers/features/rust:1
+  - vadimcn.vscode-lldb
+  - mutantdino.resourcemonitor
+  - rust-lang.rust-analyzer
+  - tamasfe.even-better-toml
+  - serayuzgur.crates
+- ghcr.io/devcontainers/features/node:1
+  - dbaeumer.vscode-eslint
+- ghcr.io/ddosakura/devcontainer-playground/deno:0
+  - denoland.vscode-deno
