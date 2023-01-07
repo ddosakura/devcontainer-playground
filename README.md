@@ -4,6 +4,27 @@ playground of
 [VSCode Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers)
 with some images
 
+## 开发常见环境问题及解决方案
+
+### 开发容器设置代理以安装 vscode 插件 `vadimcn.vscode-lldb`
+
+```bash
+# write to /home/vscode/.profile
+
+KCP_HOST=
+# export HTTP_PROXY=socks5://$KCP_HOST:29980
+# export HTTPS_PROXY=socks5://$KCP_HOST:29980
+export HTTP_PROXY=http://$KCP_HOST:29981
+export HTTPS_PROXY=http://$KCP_HOST:29981
+export NO_PROXY=$KCP_HOST,::1,localhost
+
+# 无代理主要影响 github 的使用 e.g.
+# https://github.com/vadimcn/vscode-lldb/releases/download/v1.8.1/codelldb-x86_64-linux.vsix
+# https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json
+```
+
+## tips
+
 **开发容器需要有个非 root 用户 e.g. uid/gid=1000**
 
 **~~需要能挂载 `/var/run/docker.sock`~~**
