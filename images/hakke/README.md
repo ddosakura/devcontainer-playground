@@ -13,6 +13,14 @@ cargo install wasm-pack
 corepack enable
 ```
 
+## Roadmap
+
+### next version 1.2.0
+
+- 1.2.0-lit ubuntu22.04+node+deno+direnv
+- 1.2.0-standard **lit**+rust+nix+`github-cli`
+- 1.2.0-desktop **standard**+`desktop-lite`+`tauri's dependencies`
+
 ## vscode 插件列表
 
 - ddosakura/hakke

@@ -5,10 +5,10 @@ RUN apt update \
   && apt install -y --no-install-recommends direnv \
     ### tauri's dependencies
     libwebkit2gtk-4.0-dev \
-    # build-essential \
+    build-essential \
     # curl \
     # wget \
-    # libssl-dev \
+    libssl-dev \
     libgtk-3-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
