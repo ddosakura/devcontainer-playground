@@ -23,6 +23,13 @@ export NO_PROXY=$KCP_HOST,::1,localhost
 # https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json
 ```
 
+### 需要 root 用户执行软件安装等操作
+
+```bash
+docker exec -ti <id> /bin/bash
+apt update
+```
+
 ## tips
 
 **开发容器需要有个非 root 用户 e.g. uid/gid=1000**
