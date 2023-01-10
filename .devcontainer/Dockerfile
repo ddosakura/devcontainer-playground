@@ -2,6 +2,11 @@
 # FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:0-bullseye
 FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/base:1.0.3-ubuntu22.04
 
+# ENV KCP_HOST=
+# ENV HTTP_PROXY=http://$KCP_HOST:29981
+# ENV HTTPS_PROXY=http://$KCP_HOST:29981
+# ENV NO_PROXY=$KCP_HOST,::1,localhost
+
 ENV DENO_INSTALL=/deno
 RUN mkdir -p /deno \
     && curl -fsSL https://deno.land/x/install/install.sh | sh \

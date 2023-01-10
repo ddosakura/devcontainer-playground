@@ -2,7 +2,7 @@ FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/base:1.0.3-ubuntu22.
 
 USER root
 RUN apt update \
-  && apt install -y direnv \
+  && apt install -y --no-install-recommends direnv \
     ### tauri's dependencies
     libwebkit2gtk-4.0-dev \
     # build-essential \
@@ -12,7 +12,7 @@ RUN apt update \
     libgtk-3-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
-  && apt-get -y clean \
+  && apt -y clean \
   && rm -rf /var/lib/apt/lists/*
 
 USER vscode

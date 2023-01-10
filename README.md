@@ -74,6 +74,8 @@ devcontainer features publish features/src --namespace ddosakura/devcontainer-pl
 
 cd images/hakke
 devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.1.0 .
+# custom --build-arg to proxy
+# docker buildx build --build-arg http_proxy=http://$KCP_HOST:29981 --build-arg https_proxy=http://$KCP_HOST:29981 --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /tmp/devcontainercli-vscode/container-features/0.27.1-1673365605989/Dockerfile-with-features -t ddosakura/hakke:1.1.0 --target dev_containers_target_stage --build-context dev_containers_feature_content_source=/tmp/devcontainercli-vscode/container-features/0.27.1-1673365605989 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=vscode --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /workspaces/devcontainer-playground/images/hakke/.devcontainer
 docker push ddosakura/hakke:1.1.0
 ```
 
