@@ -1,26 +1,40 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:1.0.0-ubuntu20.04",
+  "dockerFile": "Dockerfile",
+  // "runArgs": ["--shm-size=1g"],
+  // "forwardPorts": [6080],
   "features": {
+    // https://github.com/devcontainers/features/tree/main/src/desktop-lite
+    "ghcr.io/devcontainers/features/desktop-lite:1": {},
+    // https://github.com/devcontainers/features/tree/main/src/github-cli
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    // https://github.com/devcontainers/features/tree/main/src/nix
+    "ghcr.io/devcontainers/features/nix:1": {},
     // https://github.com/devcontainers/features/tree/main/src/rust
     "ghcr.io/devcontainers/features/rust:1": {
-      "version": "1.65.0"
+      "version": "1.66.0"
     },
     // https://github.com/devcontainers/features/tree/main/src/node
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "18.12.1"
+      "version": "18.13.0"
     },
     "ghcr.io/ddosakura/devcontainer-playground/deno:0": {
-      "version": "1.27.2"
+      "version": "1.29.2"
     }
   },
-  "overrideFeatureInstallOrder": [
-    "ghcr.io/devcontainers/features/rust",
-    "ghcr.io/devcontainers/features/node",
-    "ghcr.io/ddosakura/devcontainer-playground/deno"
-  ],
   "customizations": {
     "vscode": {
       "extensions": [
+        // rust
+        "vadimcn.vscode-lldb",
+        "mutantdino.resourcemonitor",
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates",
+        // node
+        "dbaeumer.vscode-eslint",
+        // deno
+        "denoland.vscode-deno",
+        // common
         "eamodio.gitlens"
       ]
     }

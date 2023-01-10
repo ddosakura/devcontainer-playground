@@ -28,7 +28,7 @@ corepack enable
 - [ghcr.io/ddosakura/devcontainer-playground/deno:0](../../features/src/deno/devcontainer-feature.json)
   - denoland.vscode-deno
 
-## 环境变量的修正方案
+## 环境变量的修正方案 (1.1.0 已集成 direnv)
 
 ```Dockerfile
 FROM ddosakura/hakke:1.0.0
