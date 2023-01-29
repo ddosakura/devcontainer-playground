@@ -21,6 +21,16 @@ corepack enable
 - 1.2.0-standard **lit**+rust+nix+`github-cli`
 - 1.2.0-desktop **standard**+`desktop-lite`+`tauri's dependencies`
 
+#### about wasmedge
+
+- https://github.com/second-state/microservice-rust-mysql/blob/main/Dockerfile
+- https://wasmedge.org/book/en/quick_start/install.html
+
+```bash
+rustup target add wasm32-wasi
+curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- -e all -p /usr/local
+```
+
 ## vscode 插件列表
 
 - ddosakura/hakke
