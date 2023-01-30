@@ -1,5 +1,70 @@
 # ddosakura/hakke:1
 
+## Quick Start
+
+```json
+{
+  "name": "name_of_workspace",
+  "image": "ddosakura/hakke:1.y.z-<version>",
+  "postCreateCommand": "corepack enable && npm config set registry http://mirrors.tencent.com/npm/",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "stylelint.vscode-stylelint",
+        "antfu.unocss"
+      ],
+      "settings": {
+        "editor.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+        "editor.fontLigatures": true
+      }
+    }
+  }
+}
+```
+
+## Versions (1.2.0+)
+
+> 自 1.1.0 加入 VNC 等功能后，镜像尺寸过大。
+>
+> 故根据使用频率、依赖关系及软件尺寸，拆分为多个版本的镜像。
+
+- **x.y.x-lit** 小工具及最常用的开发工具
+  - FROM ubuntu22.04
+  - `apt` direnv
+  - `feature` node
+  - `vscode` dbaeumer.vscode-eslint
+  - `feature` deno
+  - `vscode` denoland.vscode-deno
+  - `feature` github-cli
+  - `vscode` eamodio.gitlens
+- **x.y.x-standard** 添加 rust 工具链，基本对标 1.1.0 以前的无 VNC 环境
+  - FROM x.y.x-lit
+  - `feature` rust
+  - `vscode` vadimcn.vscode-lldb
+  - `vscode` mutantdino.resourcemonitor
+  - `vscode` rust-lang.rust-analyzer
+  - `vscode` tamasfe.even-better-toml
+  - `vscode` serayuzgur.crates
+- **x.y.x-wasm** wasm 开发支持（by rust）
+  - FROM x.y.x-standard
+  - `curl` wasmedge
+- **x.y.x-desktop** VNC 支持、tauri 开发依赖及使用频率不高的工具
+  - FROM x.y.x-wasm
+  - `apt` tauri's dependencies
+  - `feature` nix
+  - `feature` desktop-lite
+
+### node/deno/rust 版本
+
+- https://nodejs.org/en/
+- https://raw.githubusercontent.com/denoland/dotland/main/versions.json
+
+## Roadmap
+
+WIP
+
+## migrate from v0
+
 migrate from https://github.com/ddosakura/nanami/blob/HEAD/hakke/Dockerfile
 
 不再安装
@@ -11,68 +76,4 @@ migrate from https://github.com/ddosakura/nanami/blob/HEAD/hakke/Dockerfile
 cargo install wasm-pack
 # https://nodejs.org/dist/latest-v18.x/docs/api/corepack.html
 corepack enable
-```
-
-## Roadmap
-
-### next version 1.2.0
-
-- 1.2.0-lit ubuntu22.04+node+deno+direnv
-- 1.2.0-standard **lit**+rust+nix+`github-cli`
-- 1.2.0-desktop **standard**+`desktop-lite`+`tauri's dependencies`
-
-#### about wasmedge
-
-- https://github.com/second-state/microservice-rust-mysql/blob/main/Dockerfile
-- https://wasmedge.org/book/en/quick_start/install.html
-
-```bash
-rustup target add wasm32-wasi
-curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- -e all -p /usr/local
-```
-
-## vscode 插件列表
-
-- ddosakura/hakke
-  - eamodio.gitlens
-- [ghcr.io/devcontainers/features/rust:1](https://github.com/devcontainers/features/blob/main/src/rust/devcontainer-feature.json)
-  - vadimcn.vscode-lldb
-  - mutantdino.resourcemonitor
-  - rust-lang.rust-analyzer
-  - tamasfe.even-better-toml
-  - serayuzgur.crates
-- [ghcr.io/devcontainers/features/node:1](https://github.com/devcontainers/features/blob/main/src/node/devcontainer-feature.json)
-  - dbaeumer.vscode-eslint
-- [ghcr.io/ddosakura/devcontainer-playground/deno:0](../../features/src/deno/devcontainer-feature.json)
-  - denoland.vscode-deno
-
-## 环境变量的修正方案 (1.1.0 已集成 direnv)
-
-```Dockerfile
-FROM ddosakura/hakke:1.0.0
-
-USER root
-RUN apt-get update \
-  && apt-get install -y direnv
-# https://direnv.net/docs/hook.html
-RUN echo "eval \"\$(direnv hook bash)\"" >> "/home/vscode/.bashrc"
-RUN echo "eval \"\$(direnv hook zsh)\"" >> "/home/vscode/.zshrc"
-# direnv allow
-
-USER vscode
-ENV DVM_DIR=/usr/local/share/dvm
-ENV PATH="$DVM_DIR/bin:$PATH"
-RUN dvm install ${DENO_VERSION}
-# .envrc
-# export DVM_DIR=/usr/local/share/dvm
-# export PATH="$DVM_DIR/bin:$PATH"
-```
-
-## nix
-
-> [error: could not set permissions on '/nix/var/nix/profiles/per-user' to 755: Operation not permitted](https://github.com/NixOS/nix/issues/3435)
-
-```bash
-# https://github.com/devcontainers/features/tree/main/src/nix#manually-starting-the-nix-daemon
-sudo /usr/local/share/nix-entrypoint.sh
 ```

@@ -1,0 +1,27 @@
+{
+  "dockerFile": "Dockerfile",
+  "features": {
+    // https://github.com/devcontainers/features/tree/main/src/rust
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "1.67.0"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // rust
+        "vadimcn.vscode-lldb",
+        "mutantdino.resourcemonitor",
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates",
+        // node
+        "dbaeumer.vscode-eslint",
+        // deno
+        "denoland.vscode-deno",
+        // common
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}

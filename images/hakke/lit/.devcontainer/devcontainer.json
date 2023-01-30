@@ -1,0 +1,26 @@
+{
+  "dockerFile": "Dockerfile",
+  "features": {
+    // https://github.com/devcontainers/features/tree/main/src/node
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18.13.0"
+    },
+    "ghcr.io/ddosakura/devcontainer-playground/deno:0": {
+      "version": "1.30.0"
+    },
+    // https://github.com/devcontainers/features/tree/main/src/github-cli
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // node
+        "dbaeumer.vscode-eslint",
+        // deno
+        "denoland.vscode-deno",
+        // common
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}
