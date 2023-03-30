@@ -78,6 +78,8 @@ devcontainer features publish features/src --namespace ddosakura/devcontainer-pl
 ###devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.1.0 .
 cd images/hakke/lit
 devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.2.0-lit .
+cd ../ai
+devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.2.0-ai .
 cd ../standard
 devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.2.0-standard .
 docker tag ddosakura/hakke:1.2.0-standard ddosakura/hakke:1.2.0
@@ -86,7 +88,10 @@ devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.2.0-wasm 
 cd ../desktop
 devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.2.0-desktop .
 
+docker buildx build --build-arg HTTP_PROXY=http://host.docker.internal:7890 --build-arg HTTPS_PROXY=http://host.docker.internal:7890 --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /tmp/devcontainercli-vscode/container-features/0.35.0-1680205465545/Dockerfile-with-features -t ddosakura/hakke:1.2.0-ai --target dev_containers_target_stage --build-context dev_containers_feature_content_source=/tmp/devcontainercli-vscode/container-features/0.35.0-1680205465545 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=vscode --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /workspaces/devcontainer-playground/images/hakke/ai/.devcontainer
+
 docker push ddosakura/hakke:1.2.0-lit
+docker push ddosakura/hakke:1.2.0-ai
 docker push ddosakura/hakke:1.2.0-standard
 docker push ddosakura/hakke:1.2.0
 docker push ddosakura/hakke:1.2.0-wasm

@@ -1,0 +1,17 @@
+{
+  "dockerFile": "Dockerfile",
+  "features": {
+    // https://github.com/devcontainers/features/tree/main/src/python
+    "ghcr.io/devcontainers/features/python:1": {
+      "installJupyterlab": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "tamasfe.even-better-toml",
+        "ms-python.python"
+      ]
+    }
+  }
+}
