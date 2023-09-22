@@ -22,7 +22,19 @@
 }
 ```
 
-## Versions (1.2.0+)
+## node/bun/deno/rust 版本
+
+- https://nodejs.org/en/
+- https://raw.githubusercontent.com/denoland/dotland/main/versions.json
+- https://github.com/oven-sh/bun
+
+## Changelog
+
+### v1.2.0-ai
+
+> 基于 lit 追加了 python 的版本
+
+### v1.2.0+
 
 > 自 1.1.0 加入 VNC 等功能后，镜像尺寸过大。
 >
@@ -54,14 +66,62 @@
   - `feature` nix
   - `feature` desktop-lite
 
-### node/deno/rust 版本
-
-- https://nodejs.org/en/
-- https://raw.githubusercontent.com/denoland/dotland/main/versions.json
-
 ## Roadmap
 
-WIP
+### v1.3.0
+
+- 升级了各运行时版本
+- 增加新运行时
+  bun，[该运行时暂无 bvm](https://github.com/oven-sh/bun/issues/3917)
+- 鉴于
+  [deno v1.37+ 的 Jupyter 集成，将 python 合并到 standard 版](https://deno.com/blog/v1.37)
+
+- versions
+  - v1.3.0-lit
+    - FROM ubuntu22.04
+    - `feature` github-cli/node
+    - `feature/contrib` direnv/deno/
+    - `feature/custom` [bun-asdf](https://github.com/cometkim/asdf-bun)
+    - `vscode` eamodio.gitlens
+    - `vscode` dbaeumer.vscode-eslint
+    - `vscode` denoland.vscode-deno
+    - `vscode` oven.bun-vscode
+  - v1.3.0-standard
+    - FROM v1.3.0-lit
+    - `feature` rust/python
+    - `vscode` vadimcn.vscode-lldb
+    - `vscode` mutantdino.resourcemonitor
+    - `vscode` rust-lang.rust-analyzer
+    - `vscode` tamasfe.even-better-toml
+    - `vscode` serayuzgur.crates
+    - `vscode` ms-python.python
+    - `vscode` ms-python.vscode-pylance
+  - v1.3.0-wasm
+    - FROM v1.3.0-standard
+    - `curl` wasmedge
+  - v1.3.0-wasm
+    - FROM v1.3.0-standard
+    - `curl` wasmedge
+  - v1.3.0-desktop
+    - FROM v1.3.0-wasm
+    - `apt` tauri's dependencies
+    - `feature` nix/desktop-lite
+
+```jsonc
+{
+  // lit
+  // standard
+  // wasm
+  // desktop
+}
+```
+
+#### 调研
+
+- https://github.com/devcontainers/features
+- https://github.com/devcontainers-contrib/features
+- https://github.com/jdx/rtx
+  - https://github.com/cometkim/asdf-bun
 
 ## migrate from v0
 

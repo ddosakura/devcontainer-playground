@@ -54,6 +54,7 @@ apt update
 - [images](https://github.com/devcontainers/images)
 - [features](https://github.com/devcontainers/features) e.g. Docker-from-Docke
 - [templates](https://containers.dev/templates)
+- [🐳 Extra add-in features for Devcontainers and GitHub Codespaces](https://github.com/devcontainers-contrib/features)
 
 ```json
 {
