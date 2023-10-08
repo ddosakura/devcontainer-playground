@@ -1,3 +1,3 @@
-FROM ddosakura/hakke:1.2.0-lit
+FROM ddosakura/hakke:1.3.0-lit
 
 USER vscode

@@ -3,25 +3,11 @@
   "features": {
     // https://github.com/devcontainers/features/tree/main/src/rust
     "ghcr.io/devcontainers/features/rust:1": {
-      "version": "1.67.0"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        // rust
-        "vadimcn.vscode-lldb",
-        "mutantdino.resourcemonitor",
-        "rust-lang.rust-analyzer",
-        "tamasfe.even-better-toml",
-        "serayuzgur.crates",
-        // node
-        "dbaeumer.vscode-eslint",
-        // deno
-        "denoland.vscode-deno",
-        // common
-        "eamodio.gitlens"
-      ]
+      "version": "1.73.0"
+    },
+    // https://github.com/devcontainers/features/tree/main/src/python
+    "ghcr.io/devcontainers/features/python:1": {
+      "installJupyterlab": true
     }
   }
 }

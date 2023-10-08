@@ -22,13 +22,117 @@
 }
 ```
 
-## node/bun/deno/rust 版本
+## 镜像构建时相关项目最新版本
 
-- https://nodejs.org/en/
-- https://raw.githubusercontent.com/denoland/dotland/main/versions.json
-- https://github.com/oven-sh/bun
+- node 使用 LTS 版本
+
+```json
+[
+  [
+    "microsoft/TypeScript",
+    "v5.2.2"
+  ],
+  [
+    "nodejs/node",
+    "v18.18.0"
+  ],
+  [
+    "denoland/deno",
+    "v1.37.1"
+  ],
+  [
+    "denoland/deno_std",
+    "0.203.0"
+  ],
+  [
+    "oven-sh/bun",
+    "v1.0.4"
+  ],
+  [
+    "rust-lang/rust",
+    "1.73.0"
+  ],
+  [
+    "jupyter/notebook",
+    "v7.0.4"
+  ],
+  [
+    "WasmEdge/WasmEdge",
+    "0.13.4"
+  ]
+]
+```
 
 ## Changelog
+
+### v1.3.0
+
+- 升级了各运行时版本
+- 增加新运行时
+  bun，[该运行时暂无 bvm](https://github.com/oven-sh/bun/issues/3917)
+- 鉴于 [deno v1.37+ 的 Jupyter 集成](https://deno.com/blog/v1.37)，将 python
+  合并到 standard 版
+
+```bash
+deno jupyter --unstable
+```
+
+- 鉴于
+  [devcontainers-contrib/features](https://github.com/devcontainers-contrib/features/blob/main/src/direnv/README.md)
+  中的 direnv 不包含 bash/zsh 集成，依旧使用旧有方法添加
+
+- versions
+  - v1.3.0-lit
+    - FROM ubuntu22.04
+    - ~~`feature/contrib`~~ `apt` direnv
+    - `feature` github-cli/node
+    - `feature/custom` deno
+    - `feature/contrib/asdf` [bun-asdf](https://github.com/cometkim/asdf-bun)
+  - v1.3.0-standard
+    - FROM v1.3.0-lit
+    - `feature` rust/python
+  - v1.3.0-wasm
+    - FROM v1.3.0-standard
+    - `curl` wasmedge
+  - v1.3.0-desktop
+    - FROM v1.3.0-wasm
+    - `apt` tauri's dependencies
+    - `feature` nix/desktop-lite
+
+推荐扩展：
+
+```jsonc
+{
+  "recommendations": [
+    // useful
+    "antfu.unocss",
+    "antfu.iconify",
+    "antfu.goto-alias",
+    "csstools.postcss",
+    "svelte.svelte-vscode",
+    "vue.volar",
+    "Vue.vscode-typescript-vue-plugin",
+    "astro-build.astro-vscode",
+    "bierner.markdown-mermaid",
+    "unifiedjs.vscode-mdx",
+    "windmill-labs.windmill",
+    // standard
+    // "ms-python.python",
+    // "ms-python.vscode-pylance",
+    "vadimcn.vscode-lldb",
+    "mutantdino.resourcemonitor",
+    "rust-lang.rust-analyzer",
+    "tamasfe.even-better-toml",
+    "serayuzgur.crates",
+    // lit
+    "oven.bun-vscode",
+    "dbaeumer.vscode-eslint",
+    "denoland.vscode-deno",
+    // "dprint.dprint",
+    "eamodio.gitlens"
+  ]
+}
+```
 
 ### v1.2.0-ai
 
@@ -68,60 +172,10 @@
 
 ## Roadmap
 
-### v1.3.0
+> NEXT v1.4.0
 
-- 升级了各运行时版本
-- 增加新运行时
-  bun，[该运行时暂无 bvm](https://github.com/oven-sh/bun/issues/3917)
-- 鉴于
-  [deno v1.37+ 的 Jupyter 集成，将 python 合并到 standard 版](https://deno.com/blog/v1.37)
-
-- versions
-  - v1.3.0-lit
-    - FROM ubuntu22.04
-    - `feature` github-cli/node
-    - `feature/contrib` direnv/deno/
-    - `feature/custom` [bun-asdf](https://github.com/cometkim/asdf-bun)
-    - `vscode` eamodio.gitlens
-    - `vscode` dbaeumer.vscode-eslint
-    - `vscode` denoland.vscode-deno
-    - `vscode` oven.bun-vscode
-  - v1.3.0-standard
-    - FROM v1.3.0-lit
-    - `feature` rust/python
-    - `vscode` vadimcn.vscode-lldb
-    - `vscode` mutantdino.resourcemonitor
-    - `vscode` rust-lang.rust-analyzer
-    - `vscode` tamasfe.even-better-toml
-    - `vscode` serayuzgur.crates
-    - `vscode` ms-python.python
-    - `vscode` ms-python.vscode-pylance
-  - v1.3.0-wasm
-    - FROM v1.3.0-standard
-    - `curl` wasmedge
-  - v1.3.0-wasm
-    - FROM v1.3.0-standard
-    - `curl` wasmedge
-  - v1.3.0-desktop
-    - FROM v1.3.0-wasm
-    - `apt` tauri's dependencies
-    - `feature` nix/desktop-lite
-
-```jsonc
-{
-  // lit
-  // standard
-  // wasm
-  // desktop
-}
-```
-
-#### 调研
-
-- https://github.com/devcontainers/features
-- https://github.com/devcontainers-contrib/features
-- https://github.com/jdx/rtx
-  - https://github.com/cometkim/asdf-bun
+- 升级 ubuntu24.04 LTS
+- 调研 asdf 的 替代品 [rtx](https://github.com/jdx/rtx)
 
 ## migrate from v0
 

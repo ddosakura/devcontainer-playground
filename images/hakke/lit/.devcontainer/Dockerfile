@@ -1,4 +1,6 @@
-FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/base:1.0.3-ubuntu22.04
+# base image doc: https://github.com/devcontainers/images/blob/main/src/base-ubuntu/README.md
+# tags: https://mcr.microsoft.com/v2/devcontainers/base/tags/list
+FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/base:1.0.9-ubuntu22.04
 
 USER root
 RUN <<EOT bash
