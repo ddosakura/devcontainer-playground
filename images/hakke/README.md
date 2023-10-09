@@ -179,8 +179,12 @@ deno jupyter --unstable
 - 将 deno 全局安装路径写入 PATH
 
 ```bash
-echo "export PATH=\"/home/vscode/.deno/bin:\$PATH\"" >> "/home/vscode/.bashrc"
-echo "export PATH=\"/home/vscode/.deno/bin:\$PATH\"" >> "/home/vscode/.zshrc"
+# echo "export PATH=\"/home/vscode/.deno/bin:\$PATH\"" >> "/home/vscode/.bashrc"
+# echo "export PATH=\"/home/vscode/.deno/bin:\$PATH\"" >> "/home/vscode/.zshrc"
+
+# https://github.com/microsoft/vscode-remote-release/issues/2324
+# in Dockerfile
+# ENV PATH=/home/vscode/.deno/bin:$PATH
 ```
 
 ## migrate from v0
