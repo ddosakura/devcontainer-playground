@@ -176,6 +176,12 @@ deno jupyter --unstable
 
 - 升级 ubuntu24.04 LTS
 - 调研 asdf 的 替代品 [rtx](https://github.com/jdx/rtx)
+- 将 deno 全局安装路径写入 PATH
+
+```bash
+echo "export PATH=\"/home/vscode/.deno/bin:\$PATH\"" >> "/home/vscode/.bashrc"
+echo "export PATH=\"/home/vscode/.deno/bin:\$PATH\"" >> "/home/vscode/.zshrc"
+```
 
 ## migrate from v0
 
