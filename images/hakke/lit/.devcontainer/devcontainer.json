@@ -3,15 +3,15 @@
   "features": {
     // https://github.com/devcontainers/features/tree/main/src/node
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "18.18.0"
+      "version": "20.12.2"
     },
     "ghcr.io/ddosakura/devcontainer-playground/deno:0": {
-      "version": "1.37.1"
+      "version": "1.43.1"
     },
     // https://github.com/devcontainers-contrib/features/blob/main/src/asdf-package/README.md
     "ghcr.io/devcontainers-contrib/features/asdf-package:1": {
       "plugin": "bun",
-      "version": "1.0.4"
+      "version": "1.1.7"
     },
     // https://github.com/devcontainers/features/tree/main/src/github-cli
     "ghcr.io/devcontainers/features/github-cli:1": {}

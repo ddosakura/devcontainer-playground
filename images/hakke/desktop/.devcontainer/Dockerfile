@@ -1,4 +1,4 @@
-FROM ddosakura/hakke:1.3.0-wasm
+FROM ddosakura/hakke:1.4.0-wasm
 
 USER root
 # tauri's dependencies
@@ -6,7 +6,7 @@ RUN <<EOT bash
   set -ex
   apt update
   apt install -y --no-install-recommends \
-    libwebkit2gtk-4.0-dev \
+    libwebkit2gtk-4.1-dev \
     build-essential \
     libssl-dev \
     libgtk-3-dev \

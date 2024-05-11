@@ -70,6 +70,36 @@ apt update
 - [cli](https://github.com/devcontainers/cli)
 
 ```bash
+# # run by bun 存在问题，用不了
+# bun install -g @devcontainers/cli
+# bunx devcontainer
+
+# by dind
+# bunp () {
+#   docker run \
+#     --interactive \
+#     --tty \
+#     --rm \
+#     -v /var/run/docker.sock:/var/run/docker.sock \
+#     -v $PWD:$PWD \
+#     --workdir $PWD \
+#     -p $PORT:$PORT \
+#     ddosakura/dind:26.0.0-bun1.0.36 \
+#     "$@"
+# }
+PORT=6969 bunp /bin/bash
+# https://nodejs.org/en/download/package-manager
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install 20
+npm install -g @devcontainers/cli
+apt update
+# 注意，没有 buildx 的情况下 devcontainer 会回退到使用 build，此时无法解析 `RUN <<EOT` 脚本
+apt install docker-buildx-plugin
+```
+
+```bash
 echo $PAT | docker login ghcr.io --username ddosakura --password-stdin
 devcontainer features publish features/src --namespace ddosakura/devcontainer-playground
 ```
@@ -78,23 +108,23 @@ devcontainer features publish features/src --namespace ddosakura/devcontainer-pl
 ###cd images/hakke
 ###devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.1.0 .
 cd images/hakke/lit
-devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.3.0-lit .
+devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.4.0-lit .
 cd ../standard
-devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.3.0-standard .
-docker tag ddosakura/hakke:1.3.0-standard ddosakura/hakke:1.3.0
+devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.4.0-standard .
+docker tag ddosakura/hakke:1.4.0-standard ddosakura/hakke:1.4.0
 cd ../wasm
-devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.3.0-wasm .
+devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.4.0-wasm .
 cd ../desktop
-devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.3.0-desktop .
+devcontainer build --workspace-folder . --image-name ddosakura/hakke:1.4.0-desktop .
 
 # 需要代理时使用
-docker buildx build --build-arg HTTP_PROXY=http://host.docker.internal:7890 --build-arg HTTPS_PROXY=http://host.docker.internal:7890 --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /tmp/devcontainercli-vscode/container-features/0.35.0-1680205465545/Dockerfile-with-features -t ddosakura/hakke:1.3.0-ai --target dev_containers_target_stage --build-context dev_containers_feature_content_source=/tmp/devcontainercli-vscode/container-features/0.35.0-1680205465545 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=vscode --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /workspaces/devcontainer-playground/images/hakke/ai/.devcontainer
+docker buildx build --build-arg HTTP_PROXY=http://host.docker.internal:7890 --build-arg HTTPS_PROXY=http://host.docker.internal:7890 --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /tmp/devcontainercli-vscode/container-features/0.35.0-1680205465545/Dockerfile-with-features -t ddosakura/hakke:1.4.0-ai --target dev_containers_target_stage --build-context dev_containers_feature_content_source=/tmp/devcontainercli-vscode/container-features/0.35.0-1680205465545 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=vscode --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /workspaces/devcontainer-playground/images/hakke/ai/.devcontainer
 
-docker push ddosakura/hakke:1.3.0-lit
-docker push ddosakura/hakke:1.3.0-standard
-docker push ddosakura/hakke:1.3.0
-docker push ddosakura/hakke:1.3.0-wasm
-docker push ddosakura/hakke:1.3.0-desktop
+docker push ddosakura/hakke:1.4.0-lit
+docker push ddosakura/hakke:1.4.0-standard
+docker push ddosakura/hakke:1.4.0
+docker push ddosakura/hakke:1.4.0-wasm
+docker push ddosakura/hakke:1.4.0-desktop
 ```
 
 - [devcontainer.json](https://containers.dev/implementors/json_reference)

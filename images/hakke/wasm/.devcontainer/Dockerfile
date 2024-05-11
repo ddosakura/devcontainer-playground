@@ -1,4 +1,4 @@
-FROM ddosakura/hakke:1.3.0-standard
+FROM ddosakura/hakke:1.4.0-standard
 
 USER root
 RUN apt update \
