@@ -88,6 +88,10 @@ apt update
 #     "$@"
 # }
 PORT=6969 bunp /bin/bash
+
+# 一键启动环境
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:$PWD --workdir $PWD ddosakura/dind:26.0.0-bun1.0.36 /bin/bash
+
 # https://nodejs.org/en/download/package-manager
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
