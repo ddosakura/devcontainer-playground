@@ -70,6 +70,11 @@
 ]
 ```
 
+## Next
+
+- 基于 buildah/podman 构建
+- 构建适用于 M1 芯片的镜像
+
 ## Changelog
 
 ### v1.4.0
@@ -140,8 +145,7 @@ hint: See PEP 668 for the detailed specification.
   - v1.4.0-wasm
     - FROM v1.4.0-standard
     - `curl` wasmedge
-  - ~~v1.4.0-desktop~~
-    - 构建失败 - see: https://github.com/devcontainers/features/issues/968
+  - v1.4.0-desktop
     - FROM v1.4.0-wasm
     - `apt` tauri's dependencies
     - `feature` nix/desktop-lite
